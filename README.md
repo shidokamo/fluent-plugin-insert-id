@@ -2,6 +2,9 @@
 
 [Fluentd](https://fluentd.org/) filter plugin to insert unique ID string.
 
+The original implementation was copied from [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud)
+which was created by Google to handle GKE's official Stackdriver Logging reporting in sidecar containe for each pod.
+
 ## How it works
 ```
 # Input message
@@ -62,5 +65,6 @@ You can copy and paste generated documents here.
 ## Copyright
 
 * Copyright(c) 2019- Kamome Shido
+* Copyright(c) 2014- Google Inc. All rights reserved.
 * License
   * Apache License, Version 2.0

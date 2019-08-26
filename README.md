@@ -63,13 +63,26 @@ $ bundle
 
 ## Configuration
 
-You can generate configuration template:
+**insert_id_key** (string) (optional)
 
-```
-$ fluent-plugin-config-format filter insert-id
+The key of inserted-id.
+Default value is `"insert-id"`.
+
+## Usage : Insert ID with default key
+```aconf
+<filter **>
+  @type insert_id
+</filter>
 ```
 
-You can copy and paste generated documents here.
+## Usage : Insert ID with custom key
+In this case, key of ID is changed to 'message_id'
+```aconf
+<filter **>
+  @type insert_id
+  insert_id_key message_id
+</filter>
+```
 
 ## Copyright
 

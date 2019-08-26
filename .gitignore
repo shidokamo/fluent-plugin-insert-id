@@ -1,1 +1,8 @@
 fluent.conf
+vendor
+.bundle
+Gemfile.lock
+.ruby-version
+.rbenv-version
+tmp
+pkg

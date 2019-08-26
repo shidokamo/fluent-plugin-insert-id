@@ -3,7 +3,8 @@
 [Fluentd](https://fluentd.org/) filter plugin to insert unique ID string.
 
 The original implementation was copied from [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud)
-which was created by Google to handle GKE's official Stackdriver Logging reporting in sidecar containe for each pod.
+which was created by Google to handle GCP GKE's official Stackdriver Logging reporting in sidecar container for each pod.
+Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this plugin only supports fluentd v1.0.
 
 ## How it works
 ```
@@ -22,7 +23,7 @@ which was created by Google to handle GKE's official Stackdriver Logging reporti
 2019-08-25 21:20:50.035415329 +0000 message.test: {"a":"foo","b":"bar","insert-id":"nu8a3ptahpbetdea"}
 ```
 
-* It is guaranteed that ID is fixed length string which contains  0-9 and a-z lowercase characters.
+* It is guaranteed that ID is fixed length string which contains 0-9 and a-z lowercase characters.
 * Initial ID generated is random string like "nu8a3ptahpbetddc".
 * Series ID after the initial ID are 'incremented' string which uses Ruby's `String.next()`.
 * 'incremented' string also has 'carry' feature. Please check below links for more details.

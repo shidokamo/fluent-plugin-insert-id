@@ -31,6 +31,14 @@ Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this
   * [String.next() (Japanese)](https://docs.ruby-lang.org/ja/2.4.0/class/String.html#I_NEXT)
 * This ordered ID makes debugging easier in most cases.
 
+## Requirements
+
+| fluent-plugin-insert-id  | fluentd | ruby |
+|--------------------------|---------|------|
+| >= 1.0.0 | >= v0.14.x | >= 2.1 |
+
+fluentd v0.12 is not supported.
+
 ## Installation
 
 ### RubyGems

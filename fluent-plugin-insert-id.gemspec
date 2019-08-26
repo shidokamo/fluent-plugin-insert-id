@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Kamome Shido"]
   spec.email   = ["shidokamo@users.noreply.github.com"]
 
-  spec.summary       = %q{fluentd filter plugin to insert unique id}
-  spec.description   = %q{fluentd filter plugin to insert unique id}
+  spec.summary       = %q{fluentd filter plugin to insert unique id into the message}
+  spec.description   = %q{fluentd filter plugin to insert unique id into the message}
   spec.homepage      = "https://github.com/shidokamo/fluent-plugin-insert-id"
   spec.license       = "Apache-2.0"
 

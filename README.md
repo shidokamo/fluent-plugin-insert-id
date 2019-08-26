@@ -1,6 +1,6 @@
 # fluent-plugin-insert-id
 
-[Fluentd](https://fluentd.org/) filter plugin to insert unique ID string.
+[Fluentd](https://fluentd.org/) filter plugin to insert unique ID string into the message.
 
 The original implementation was copied from [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud)
 which was created by Google to handle GCP GKE's official Stackdriver Logging reporting in sidecar container for each pod.

@@ -22,7 +22,7 @@ Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this
 2019-08-25 21:20:47.019565139 +0000 message.test: {"a":"foo","b":"bar","insert-id":"nu8a3ptahpbetddz"}
 2019-08-25 21:20:50.035415329 +0000 message.test: {"a":"foo","b":"bar","insert-id":"nu8a3ptahpbetdea"}
 ```
-* 
+
 * Inserted ID contains 0-9 and a-z lowercase characters.
 * Initial ID generated is random string like "nu8a3ptahpbetddc".
 * Series ID after the initial ID are 'incremented' string which uses Ruby's `String.next()`.

@@ -22,14 +22,40 @@ Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this
 2019-08-25 21:20:47.019565139 +0000 message.test: {"a":"foo","b":"bar","insert-id":"nu8a3ptahpbetddz"}
 2019-08-25 21:20:50.035415329 +0000 message.test: {"a":"foo","b":"bar","insert-id":"nu8a3ptahpbetdea"}
 ```
-
-* It is guaranteed that ID is fixed length string which contains 0-9 and a-z lowercase characters.
+* 
+* Inserted ID contains 0-9 and a-z lowercase characters.
 * Initial ID generated is random string like "nu8a3ptahpbetddc".
 * Series ID after the initial ID are 'incremented' string which uses Ruby's `String.next()`.
 * 'incremented' string also has 'carry' feature. Please check below links for more details.
   * [String.next()](https://ruby-doc.org/core-2.4.0/String.html#method-i-next)
   * [String.next() (Japanese)](https://docs.ruby-lang.org/ja/2.4.0/class/String.html#I_NEXT)
 * This ordered ID makes debugging easier in most cases.
+
+#### ID string length
+* **From version 1.1.0, it is guaranteed that ID is fixed length string. **
+* **In version 1.0.0, the ID string length is incremented when carry happens at left-most characters.**
+
+```ruby
+# Version 1.0.0
+{"a":"foo","b":"bar","insert-id":"z99999999999999z"}
+{"a":"foo","b":"bar","insert-id":"aa00000000000000z"} # Left most character carry adds new digit.
+
+# Version 1.1.0
+{"a":"foo","b":"bar","insert-id":"z99999999999999z"}
+{"a":"foo","b":"bar","insert-id":"a00000000000000z"} # Left most character carry is ignored.
+```
+
+#### Existing ID protection
+If the message already has the key for inserted ID, the filter doesn't touch it and
+existing value is protected.
+
+```
+2019-08-27 02:10:07.422911774 +0000 message.test: {"a":"foo","b":"bar","insert-id":"ehrbwzp772xitjsv"}
+2019-08-27 02:10:08.129842499 +0000 message.test: {"a":"foo","b":"bar","insert-id":"ehrbwzp772xitjsw"}
+2019-08-27 02:10:08.940316454 +0000 message.test: {"a":"foo","b":"bar","insert-id":"ehrbwzp772xitjsx"}
+2019-08-27 02:11:02.498772740 +0000 message.test: {"a":"foo","b":"bar","insert-id":"existing_ID"}
+2019-08-27 02:11:06.802934944 +0000 message.test: {"a":"foo","b":"bar","insert-id":"ehrbwzp772xitjsy"}
+```
 
 ## Requirements
 

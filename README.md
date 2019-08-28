@@ -63,7 +63,7 @@ The [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-p
 |:---|:---:|:---:|
 | Fluentd 0.12 support | NO | YES |
 | Fluentd 0.14 support | YES | NO |
-| ID field key | `insert-id` | `logging.googleapis.com/insertId` |
+| Default ID field key | `insert-id` | `logging.googleapis.com/insertId` |
 | Initial ID length | 16 | 17 |
 | Fixed length ID is guaranteed | YES (>= v1.1.0) | NO |
 | ID characters | 0-9a-z | 0-9a-z |

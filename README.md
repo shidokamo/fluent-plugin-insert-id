@@ -3,8 +3,7 @@
 [Fluentd](https://fluentd.org/) filter plugin to insert unique ID string into the message.
 
 The original implementation was copied from [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud)
-which was created by Google to handle GCP GKE's official Stackdriver Logging reporting in sidecar container for each pod.
-Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this plugin only supports fluentd v0.14 or later.
+which was created by Google to handle GCP GKE's official Stackdriver Logging reporting in sidecar container for each pod. You can check the difference between these plugins in [here](https://github.com/shidokamo/fluent-plugin-insert-id#difference-between-original-ip-fluent-plugin-google-cloud-and-this-plugin)
 
 ## How it works
 ```
@@ -31,7 +30,7 @@ Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this
   * [String.next() (Japanese)](https://docs.ruby-lang.org/ja/2.4.0/class/String.html#I_NEXT)
 * This ordered ID makes debugging easier in most cases.
 
-#### ID string length
+### ID string length
 * **From version 1.1.0, it is guaranteed that ID is fixed length string.**
 * **In version 1.0.0, the ID string length is incremented when carry happens at left-most characters.**
 
@@ -45,7 +44,7 @@ Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this
 {"a":"foo","b":"bar","insert-id":"a00000000000000z"} # Left most character carry is ignored.
 ```
 
-#### Existing ID protection
+### Existing ID protection
 If the message already has the key for inserted ID, the filter doesn't touch it and
 existing value is protected.
 
@@ -56,6 +55,19 @@ existing value is protected.
 2019-08-27 02:11:02.498772740 +0000 message.test: {"a":"foo","b":"bar","insert-id":"existing_ID"}
 2019-08-27 02:11:06.802934944 +0000 message.test: {"a":"foo","b":"bar","insert-id":"ehrbwzp772xitjsy"}
 ```
+
+### Difference between original IP(fluent-plugin-google-cloud) and this plugin
+The [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud) also provides ID insertion filter plugin as one of its function. Please note that there are some differences between these two plugins.
+
+|   | fluent-plugin-insert-id | fluent-plugin-google-cloud |
+|:---|:---:|:---:|
+| Fluentd 0.12 support | NO | YES |
+| Fluentd 0.14 support | YES | NO |
+| ID field key | `insert-id` | `logging.googleapis.com/insertId` |
+| Initial ID length | 16 | 17 |
+| Fixed length ID is guaranteed | YES (>= v1.1.0) | NO |
+| ID characters | 0-9a-z | 0-9a-z |
+| Ordered ID | YES | YES |
 
 ## Requirements
 

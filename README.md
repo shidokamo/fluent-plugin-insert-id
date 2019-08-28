@@ -4,7 +4,7 @@
 
 The original implementation was copied from [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud)
 which was created by Google to handle GCP GKE's official Stackdriver Logging reporting in sidecar container for each pod.
-Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this plugin only supports fluentd v1.0.
+Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this plugin only supports fluentd v0.14 or later.
 
 ## How it works
 ```
@@ -32,7 +32,7 @@ Original source requires fluentd v0.12 and doesn't support fluentd v1.0 but this
 * This ordered ID makes debugging easier in most cases.
 
 #### ID string length
-* **From version 1.1.0, it is guaranteed that ID is fixed length string. **
+* **From version 1.1.0, it is guaranteed that ID is fixed length string.**
 * **In version 1.0.0, the ID string length is incremented when carry happens at left-most characters.**
 
 ```ruby

@@ -3,7 +3,7 @@
 [Fluentd](https://fluentd.org/) filter plugin to insert unique ID string into the message.
 
 The original implementation was copied from [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud)
-which was created by Google to handle GCP GKE's official Stackdriver Logging reporting in sidecar container for each pod. You can check the difference between these plugins in [here](https://github.com/shidokamo/fluent-plugin-insert-id#difference-between-original-ip-fluent-plugin-google-cloud-and-this-plugin)
+which was created by Google to handle GCP GKE's official Stackdriver Logging reporting in sidecar container for each pod. You can check the difference between these plugins in [here](https://github.com/shidokamo/fluent-plugin-insert-id#differences-between-original-ipfluent-plugin-google-cloud-and-this-plugin)
 
 ## How it works
 ```
@@ -56,7 +56,7 @@ existing value is protected.
 2019-08-27 02:11:06.802934944 +0000 message.test: {"a":"foo","b":"bar","insert-id":"ehrbwzp772xitjsy"}
 ```
 
-### Difference between original IP(fluent-plugin-google-cloud) and this plugin
+### Differences between original IP(fluent-plugin-google-cloud) and this plugin
 The [fluent-plugin-google-cloud](https://github.com/GoogleCloudPlatform/fluent-plugin-google-cloud) also provides ID insertion filter plugin as one of its function. Please note that there are some differences between these two plugins.
 
 |   | fluent-plugin-insert-id | fluent-plugin-google-cloud |
